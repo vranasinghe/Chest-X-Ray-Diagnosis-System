@@ -34,6 +34,7 @@ export default function App() {
           <Route path="/login" element={<Login />} />
           <Route path="/register" element={<Register />} />
           <Route path="/" element={<HomeRoute />} />
+          <Route path="/home" element={<Navigate to="/" replace />} />
           <Route path="/patients" element={<Protected><Patients /></Protected>} />
           <Route path="/analysis" element={<Protected><Analysis /></Protected>} />
           <Route path="/comparison" element={<Protected><Comparison /></Protected>} />
@@ -45,6 +46,7 @@ export default function App() {
           <Route path="/patients/:id" element={<Protected><PatientProfile /></Protected>} />
           <Route path="/patients/:id/verify" element={<Protected><VerifyPatient /></Protected>} />
           <Route path="/patients/:id/edit" element={<Protected><EditPatient /></Protected>} />
+          <Route path="*" element={<Navigate to="/" replace />} />
         </Routes>
       </BrowserRouter>
     </AuthProvider>

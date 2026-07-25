@@ -755,16 +755,56 @@ export default function Landing() {
         }
         .doctor-img-wrap {
           height: 320px;
-          background: linear-gradient(135deg, #e0f8f6 0%, #eff6ff 100%);
+          background: linear-gradient(135deg, #e0f2fe 0%, #bae6fd 100%);
           display: flex;
           align-items: center;
           justify-content: center;
           position: relative;
           overflow: hidden;
         }
-        .doctor-img-wrap svg {
-          color: var(--teal-primary);
-          opacity: 0.6;
+        .doctor-badge-overlay.light-blue {
+          position: absolute;
+          top: 16px;
+          right: 16px;
+          width: 44px;
+          height: 44px;
+          border-radius: 50%;
+          background: #0284c7;
+          color: #ffffff;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          box-shadow: 0 8px 20px rgba(2, 132, 199, 0.35);
+          border: 2.5px solid #ffffff;
+          z-index: 5;
+          transition: var(--transition-smooth);
+        }
+        .doctor-card:hover .doctor-badge-overlay.light-blue {
+          transform: scale(1.12) rotate(6deg);
+          background: #0369a1;
+        }
+        .about-img-box {
+          position: relative;
+          border-radius: 24px;
+          overflow: hidden;
+        }
+        .team-badge-overlay.light-blue {
+          position: absolute;
+          top: 20px;
+          left: 20px;
+          background: rgba(2, 132, 199, 0.92);
+          backdrop-filter: blur(8px);
+          color: #ffffff;
+          padding: 10px 18px;
+          border-radius: 30px;
+          display: flex;
+          align-items: center;
+          gap: 8px;
+          font-size: 13px;
+          font-weight: 700;
+          box-shadow: 0 8px 24px rgba(2, 132, 199, 0.3);
+          border: 1.5px solid rgba(255, 255, 255, 0.3);
+          z-index: 5;
         }
         .doctor-card h3 {
           font-family: var(--font-outfit);
@@ -1313,15 +1353,7 @@ export default function Landing() {
           </div>
           <div className="hero-right">
             <div className="hero-image-container">
-              <img src="/hero_doctors.png" alt="Hero Doctor Team" className="hero-right-img" onError={(e) => { e.target.style.display = 'none'; }} />
-              <div className="hero-image-fallback">
-                <svg width="80" height="80" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5">
-                  <path d="M4.82 4.82a10 10 0 0 1 14.36 0M2.44 9h19.12M2 14h20M4.82 19.18a10 10 0 0 0 14.36 0" />
-                  <rect x="9" y="9" width="6" height="6" rx="1" />
-                </svg>
-                <div style={{ fontWeight: 700, color: 'var(--blue-dark)' }}>ProMed Clinical Center</div>
-                <div style={{ fontSize: 13, color: '#64748b', marginTop: 4 }}>State-of-the-art Medical Solutions</div>
-              </div>
+              <img src="/hero_doctors.png" alt="Hero Doctor Team" className="hero-right-img" />
             </div>
             <div className="floating-badge">
               <div className="floating-badge-icon">
@@ -1385,10 +1417,13 @@ export default function Landing() {
         <div className="about-left-image">
           <div className="about-img-box">
             <img src="/doctors_team.png" alt="Clinical Staff" className="hero-right-img" onError={(e) => { e.target.style.display = 'none'; }} />
-            <svg width="70" height="70" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5">
-              <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2" /><circle cx="9" cy="7" r="4" />
-              <path d="M23 21v-2a4 4 0 0 0-3-3.87" /><path d="M16 3.13a4 4 0 0 1 0 7.75" />
-            </svg>
+            <div className="team-badge-overlay light-blue">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
+                <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2" /><circle cx="9" cy="7" r="4" />
+                <path d="M23 21v-2a4 4 0 0 0-3-3.87" /><path d="M16 3.13a4 4 0 0 1 0 7.75" />
+              </svg>
+              <span>Verified Clinical Staff</span>
+            </div>
           </div>
           <div className="about-experience-badge">
             <div>15+</div>
@@ -1563,9 +1598,11 @@ export default function Landing() {
             <div className="doctor-card">
               <div className="doctor-img-wrap">
                 <img src="/doctor_sarah.png" alt="Dr. Sarah Jenkins" className="hero-right-img" onError={(e) => { e.target.style.display = 'none'; }} />
-                <svg width="60" height="60" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1">
-                  <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2" /><circle cx="12" cy="7" r="4" />
-                </svg>
+                <div className="doctor-badge-overlay light-blue" title="Cardiology Specialist">
+                  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
+                    <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l8.72-8.72 1.06-1.06a5.5 5.5 0 0 0 0-7.78z" />
+                  </svg>
+                </div>
               </div>
               <h3>Dr. Sarah Jenkins</h3>
               <div className="doctor-role">Cardiologist</div>
@@ -1574,9 +1611,11 @@ export default function Landing() {
             <div className="doctor-card">
               <div className="doctor-img-wrap">
                 <img src="/doctor_marcus.png" alt="Dr. Marcus Vance" className="hero-right-img" onError={(e) => { e.target.style.display = 'none'; }} />
-                <svg width="60" height="60" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1">
-                  <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2" /><circle cx="12" cy="7" r="4" />
-                </svg>
+                <div className="doctor-badge-overlay light-blue" title="Pediatrics Specialist">
+                  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
+                    <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2" /><circle cx="12" cy="7" r="4" />
+                  </svg>
+                </div>
               </div>
               <h3>Dr. Marcus Vance</h3>
               <div className="doctor-role">Pediatrician</div>
@@ -1585,9 +1624,11 @@ export default function Landing() {
             <div className="doctor-card">
               <div className="doctor-img-wrap">
                 <img src="/doctor_emily.png" alt="Dr. Emily Stone" className="hero-right-img" onError={(e) => { e.target.style.display = 'none'; }} />
-                <svg width="60" height="60" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1">
-                  <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2" /><circle cx="12" cy="7" r="4" />
-                </svg>
+                <div className="doctor-badge-overlay light-blue" title="Neurology Specialist">
+                  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
+                    <polyline points="22 12 18 12 15 21 9 3 6 12 2 12" />
+                  </svg>
+                </div>
               </div>
               <h3>Dr. Emily Stone</h3>
               <div className="doctor-role">Neurologist</div>
