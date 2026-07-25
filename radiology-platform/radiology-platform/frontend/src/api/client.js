@@ -1,4 +1,7 @@
-const BASE = import.meta.env.VITE_API_URL || 'http://localhost:4000/api';
+let rawBase = (import.meta.env.VITE_API_URL || 'http://localhost:4000/api').trim();
+if (rawBase.endsWith('/')) rawBase = rawBase.slice(0, -1);
+if (!rawBase.endsWith('/api')) rawBase = `${rawBase}/api`;
+const BASE = rawBase;
 
 function token() {
   return localStorage.getItem('token');
